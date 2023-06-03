@@ -9,8 +9,7 @@ module.exports.insertData = async (body) => {
         console.log(`tableName: ${JSON.stringify(tableName)}`);
         const params = {
             TableName: tableName,
-            Item: JSON.parse(body),
-            ReturnValues: 'ALL_OLD'
+            Item: JSON.parse(body)
         };
         console.log(params)
         const res = await docClient.put(params).promise()
@@ -29,10 +28,12 @@ module.exports.insertData = async (body) => {
 module.exports.getItem = async (body) => {
 
     try {
-        var params = {
+        console.log(body)
+        const params = {
             TableName: tableName,
-            Key: body
+            Key: JSON.parse(JSON.stringify(body))
         };
+        console.log(params)
         const res = await docClient.get(params).promise()
         console.log(`data inserted successfully: ${JSON.stringify(res)}`)
         return 'data fetched successfully! Heart eyes'
