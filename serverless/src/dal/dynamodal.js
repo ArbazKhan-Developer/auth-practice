@@ -11,16 +11,15 @@ module.exports.insertData = async (body)=>{
             TableName: tableName,
             Item: body
           };
-          docClient.put(params, function(err, data) {
-            if (err) {
-              console.log("Error", err);
-            } else {
-              console.log("Success", data);
-              return 'data inserted successfullt'
-            }
-          });
+         console.log(params)
+         const res = await docClient.put(params).promise()
+         console.log(`data inserted successfully: ${JSON.stringify(res)}`)
+        return res
+               
     } catch (error) {
+        console.log(`error occourred while inserting data into dynamo`);
         console.log(error);
+        throw error
     }
 
 
