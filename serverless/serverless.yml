@@ -1,5 +1,10 @@
 service: auth-service
 frameworkVersion: '3'
+
+custom:
+  tableName: my-product-table
+
+
 provider:
   name: aws
   runtime: nodejs18.x
@@ -29,8 +34,11 @@ plugins:
   - serverless-offline
 functions:
   hello:
-    handler: handlers/src/auth-handler.hello
+    handler: handlers/auth-handler.hello
     events:
       - httpApi:
           path: /users
           method: get
+
+resources:
+  - ${file(./configs/resources/dynamo.yml)}

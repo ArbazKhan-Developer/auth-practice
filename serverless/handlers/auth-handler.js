@@ -1,13 +1,14 @@
 'use strict';
-// const apiProcess = require('../../../api/src/authApiProcess')
+const apiProcess = require('../src/api/authApi')
 module.exports.hello = async (event) => {
     
   console.log(`event received:: ${JSON.stringify(event)}`);
   console.log('returning the response');
+  const res = await apiProcess.authProcess(event)
 
   return {
-    statusCode: 200,
-    body: 'api processed successfully'
+    statusCode: res.statusCode,
+    body: res.message
   };
 
   // Use this code if you don't use the http event with the LAMBDA-PROXY integration
