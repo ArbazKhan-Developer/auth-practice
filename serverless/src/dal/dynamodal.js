@@ -9,7 +9,7 @@ module.exports.insertData = async (body)=>{
         console.log(`tableName: ${JSON.stringify(tableName)}`);
         const params = {
             TableName: tableName,
-            Item: body
+            Item: JSON.parse(body)
           };
          console.log(params)
          const res = await docClient.put(params).promise()
