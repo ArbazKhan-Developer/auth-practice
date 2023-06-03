@@ -2,7 +2,7 @@ Resources:
     productTable:
       Type: AWS::DynamoDB::Table
       Properties:
-          TableName: ${self.custom.productTableName}
+          TableName: productTable
           AttributeDefinitions:
             - AttributeName: productName
               AttributeType: S

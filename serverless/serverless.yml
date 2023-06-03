@@ -1,9 +1,6 @@
 service: auth-service
 frameworkVersion: '3'
 
-custom:
-  productTableName: my-product-table-dev
-
 
 provider:
   name: aws
