@@ -9,7 +9,7 @@ module.exports.insertData = async (body)=>{
         console.log(`tableName: ${JSON.stringify(tableName)}`);
         const params = {
             TableName: tableName,
-            Item: JSON.parse(body)
+            Item: JSON.parse(body),
             ReturnValues: 'ALL_OLD'
           };
          console.log(params)
