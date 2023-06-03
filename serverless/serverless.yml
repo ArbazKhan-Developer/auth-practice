@@ -2,7 +2,7 @@ service: auth-service
 frameworkVersion: '3'
 
 custom:
-  tableName: my-product-table
+  productTableName: my-product-table-dev
 
 
 provider:
