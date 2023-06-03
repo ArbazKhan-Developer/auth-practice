@@ -31,7 +31,7 @@ module.exports.getItem = async (body) => {
     try {
         var params = {
             TableName: tableName,
-            Key: JSON.parse(body) 
+            Key: body
         };
         const res = await docClient.get(params).promise()
         console.log(`data inserted successfully: ${JSON.stringify(res)}`)
