@@ -37,7 +37,7 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
           Resource: "*"
-  
+  environment:  ${file(./configs/variable/env.yml)}
 plugins:
   - serverless-offline
 functions:
@@ -45,8 +45,17 @@ functions:
     handler: handlers/auth-handler.hello
     events:
       - httpApi:
-          path: /users
+          path: /getProduct
           method: get
+
+  postData:
+    handler: handlers/product-post.postData
+    events:
+      - httpApi:
+          path: /product
+          method: POST
+
+  
 
 resources:
   - ${file(./configs/resources/dynamo.yml)}
