@@ -10,6 +10,7 @@ module.exports.insertData = async (body)=>{
         const params = {
             TableName: tableName,
             Item: JSON.parse(body)
+            ReturnValues: 'ALL_OLD'
           };
          console.log(params)
          const res = await docClient.put(params).promise()
