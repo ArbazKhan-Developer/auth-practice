@@ -14,3 +14,13 @@ module.exports.requestModal = async (request) => {
 
 
 }
+
+module.exports.requestGetModal = async (request) => {
+
+
+    const queryStr = request.queryStringParameters
+    const res = await dynamoDal.getItem(queryStr)
+    console.log(res);
+    return res
+
+}
