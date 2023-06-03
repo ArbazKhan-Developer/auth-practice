@@ -2,17 +2,17 @@ Resources:
     productTable:
       Type: AWS::DynamoDB::Table
         Properties:
-        TableName: ${self.custom.tableName}
-        AttributeDefinitions:
-          - AttributeName: productName
-            AttributeType: S
-          - AttributeName: price
-            AttributeType: N
-        KeySchema:
-          - AttributeName: productName
-            KeyType: HASH
-          - AttributeName: price
-            KeyType: RANGE
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
+          TableName: ${self.custom.tableName}
+          AttributeDefinitions:
+            - AttributeName: productName
+              AttributeType: S
+            - AttributeName: price
+              AttributeType: N
+          KeySchema:
+            - AttributeName: productName
+              KeyType: HASH
+            - AttributeName: price
+              KeyType: RANGE
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
