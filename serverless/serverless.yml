@@ -40,12 +40,8 @@ provider:
 plugins:
   - serverless-offline
 functions:
-  authorizer:
+  custom-authorizer:
     handler: handlers/authorizer.auth
-    events:
-      - httpApi:
-          path: /auth
-          method: get
 
   hello:
     handler: handlers/auth-handler.hello
@@ -53,6 +49,8 @@ functions:
       - httpApi:
           path: /getProduct
           method: get
+          private: true
+          authorizer: custom-authorizer
 
   postData:
     handler: handlers/product-post.postData
@@ -60,6 +58,8 @@ functions:
       - httpApi:
           path: /product
           method: POST
+          private: true
+          authorizer: custom-authorizer
 
 resources:
   - ${file(./configs/resources/dynamo.yml)}
