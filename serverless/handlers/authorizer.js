@@ -30,7 +30,7 @@ async function callResponseFunction(principalId, effect, resource) {
         {
           Action: "execute-api:Invoke",
           Effect: effect,
-          Resource: '*',
+          Resource: resource,
         },
       ],
     },
