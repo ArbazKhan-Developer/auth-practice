@@ -60,10 +60,6 @@ functions:
       - http:
           path: /product
           method: POST
-          authorizer:
-            name: custom-authorizer
-            type: request
-            identitySource: method.request.header.my-token
 
 resources:
   - ${file(./configs/resources/dynamo.yml)}
