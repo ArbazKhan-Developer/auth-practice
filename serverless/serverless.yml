@@ -46,7 +46,7 @@ functions:
   hello:
     handler: handlers/auth-handler.hello
     events:
-      - httpApi:
+      - http:
           path: /getProduct
           method: get
           private: true
@@ -55,7 +55,7 @@ functions:
   postData:
     handler: handlers/product-post.postData
     events:
-      - httpApi:
+      - http:
           path: /product
           method: POST
           private: true
