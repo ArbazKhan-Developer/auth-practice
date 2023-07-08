@@ -41,6 +41,15 @@ provider:
 plugins:
   - serverless-offline
 functions:
+
+  authorizer:
+    handler: handlers/authorizer.auth
+    events:
+      - httpApi:
+        path: /auth
+        method: get
+
+        
   hello:
     handler: handlers/auth-handler.hello
     events:
