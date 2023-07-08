@@ -6,7 +6,7 @@ module.exports.auth = async (event) => {
   if (event.headers["my-token"]) {
     const token = process.env.TOKEN;
     console.log(`token: ${token}`);
-    const myToken = event.headers["my-token"];
+    const myToken = event.headers["my-token"] || authorizationToken;
 
     if (token === myToken) {
       return await callResponseFunction("my-auth-api", "Allow", event.methodArn);
@@ -30,7 +30,7 @@ async function callResponseFunction(principalId, effect, resource) {
         {
           Action: "execute-api:Invoke",
           Effect: effect,
-          Resource: resource,
+          Resource: '*',
         },
       ],
     },

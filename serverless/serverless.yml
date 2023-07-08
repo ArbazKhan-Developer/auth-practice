@@ -49,8 +49,10 @@ functions:
       - http:
           path: /getProduct
           method: get
-          private: true
-          authorizer: custom-authorizer
+          authorizer:
+            name: custom-authorizer
+            type: request
+            identitySource: method.request.header.my-token
 
   postData:
     handler: handlers/product-post.postData
@@ -58,8 +60,10 @@ functions:
       - http:
           path: /product
           method: POST
-          private: true
-          authorizer: custom-authorizer
+          authorizer:
+            name: custom-authorizer
+            type: request
+            identitySource: method.request.header.my-token
 
 resources:
   - ${file(./configs/resources/dynamo.yml)}
