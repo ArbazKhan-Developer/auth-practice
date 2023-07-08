@@ -1,6 +1,5 @@
 service: auth-service
-frameworkVersion: '3'
-
+frameworkVersion: "3"
 
 provider:
   name: aws
@@ -12,19 +11,19 @@ provider:
       statements:
         - Effect: Allow
           Action:
-            - 's3:ListBucket'
+            - "s3:ListBucket"
           Resource:
-            'Fn::Join':
-              - ''
-              - - 'arn:aws:s3:::'
+            "Fn::Join":
+              - ""
+              - - "arn:aws:s3:::"
                 - Ref: ServerlessDeploymentBucket
         - Effect: Allow
           Action:
-            - 's3:PutObject'
+            - "s3:PutObject"
           Resource:
-            'Fn::Join':
-              - ''
-              - - 'arn:aws:s3:::'
+            "Fn::Join":
+              - ""
+              - - "arn:aws:s3:::"
                 - Ref: ServerlessDeploymentBucket
                 - /*
         - Effect: Allow
@@ -37,19 +36,17 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
           Resource: "*"
-  environment:  ${file(./configs/variable/env.yml)}
+  environment: ${file(./configs/variable/env.yml)}
 plugins:
   - serverless-offline
 functions:
-
   authorizer:
     handler: handlers/authorizer.auth
     events:
       - httpApi:
-        path: /auth
-        method: get
+          path: /auth
+          method: get
 
-        
   hello:
     handler: handlers/auth-handler.hello
     events:
@@ -63,8 +60,6 @@ functions:
       - httpApi:
           path: /product
           method: POST
-
-  
 
 resources:
   - ${file(./configs/resources/dynamo.yml)}
